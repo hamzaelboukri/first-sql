@@ -42,20 +42,21 @@ CREATE TABLE watchhistory (
     UserID INT NOT NULL,
     MovieID INT NOT NULL,
     WatchDate DATE,
-    CompletionPercentage INT CHECK (CompletionPercentage BETWEEN 0 AND 100),
+    CompletionPercentage INT ,
     FOREIGN KEY (MovieID) REFERENCES movie(MovieID)
 );
 
 -- ajouter constrent foregin key 
 ALTER TABLE user_
 ADD CONSTRAINT FK_  FOREIGN KEY (SubscriptionID) REFERENCES subscription(SubscriptionID)
+
 -- ajouter constrent foregin key 
 ALTER TABLE review
 ADD CONSTRAINT FK_1 FOREIGN KEY (UserID) REFERENCES user(UserID)
 
 -- ajouter constrent foregin key 
 ALTER TABLE watchhistory
-ADD CONSTRAINT FK_1 FOREIGN KEY (UserID) REFERENCES user(UserID)
+ADD CONSTRAINT FK_2 FOREIGN KEY (UserID) REFERENCES user(UserID)
 
 
    
