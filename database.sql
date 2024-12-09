@@ -58,5 +58,22 @@ ADD CONSTRAINT FK_1 FOREIGN KEY (UserID) REFERENCES user(UserID)
 ALTER TABLE watchhistory
 ADD CONSTRAINT FK_2 FOREIGN KEY (UserID) REFERENCES user(UserID)
 
+-- MODIFER subscription
+ALTER TABLE subscription
+MODIFY COLUMN SubscriptionType ENUM('BASIC', 'PREMIUM') NOT NULL;
 
+-- add movier
    
+INSERT INTO movie (
+    Title,
+    Genre,
+    ReleaseYear,
+    Duration,
+    Rating
+)
+VALUES ('
+       Data Science Adventures ',
+        'Docmmentary',
+        2024,
+        120,
+        'PG')
