@@ -8,7 +8,6 @@ CREATE TABLE user_ (
     Email VARCHAR(100) UNIQUE NOT NULL,
     Date DATE NOT NULL,
     SubscriptionID INT,
-    FOREIGN KEY (SubscriptionID) REFERENCES subscription(SubscriptionID)
 );
 
  -- table 2
@@ -34,7 +33,6 @@ CREATE TABLE review (
     Rating INT CHECK (Rating BETWEEN 0 AND 5),
     ReviewText TEXT,
     ReviewDate DATE NULL,
-    FOREIGN KEY (UserID) REFERENCES user(UserID),
     FOREIGN KEY (MovieID) REFERENCES movie(MovieID)
 );
 -- TABLE 5
@@ -45,6 +43,19 @@ CREATE TABLE watchhistory (
     MovieID INT NOT NULL,
     WatchDate DATE,
     CompletionPercentage INT CHECK (CompletionPercentage BETWEEN 0 AND 100),
-    FOREIGN KEY (UserID) REFERENCES user(UserID),
     FOREIGN KEY (MovieID) REFERENCES movie(MovieID)
 );
+
+-- ajouter constrent foregin key 
+ALTER TABLE user_
+ADD CONSTRAINT FK_  FOREIGN KEY (SubscriptionID) REFERENCES subscription(SubscriptionID)
+-- ajouter constrent foregin key 
+ALTER TABLE review
+ADD CONSTRAINT FK_1 FOREIGN KEY (UserID) REFERENCES user(UserID)
+
+-- ajouter constrent foregin key 
+ALTER TABLE watchhistory
+ADD CONSTRAINT FK_1 FOREIGN KEY (UserID) REFERENCES user(UserID)
+
+
+   
