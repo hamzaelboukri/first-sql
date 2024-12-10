@@ -90,4 +90,9 @@ MODIFY completionpercentage INT CHECK (completionpercentage BETWEEN 0 AND 100);
  -- modifer
 ALTER TABLE user_
 MODIFY COLUMN subscriptionid int null;
+-- sort 
+
+SELECT * 
+FROM movie 
+WHERE genre= 'Comedy'AND releaseyear > 2020
      
