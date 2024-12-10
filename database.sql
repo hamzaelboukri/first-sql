@@ -96,3 +96,10 @@ SELECT *
 FROM movie 
 WHERE genre= 'Comedy'AND releaseyear > 2020
      
+-- update
+
+
+
+     UPDATE subscription 
+SET subscriptiontype = 'Premium', monthlyfee = 11.99
+WHERE subscriptiontype= 'basic';
