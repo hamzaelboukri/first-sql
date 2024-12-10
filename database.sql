@@ -77,3 +77,17 @@ VALUES ('
         2024,
         120,
         'PG')
+
+-- inner join 
+
+
+SELECT user_.FirstName,subscription.SubscriptionType 
+FROM user_ INNER JOIN subscription ON user_.SubscriptionID=subscription.SubscriptionID;
+
+-- modifer
+ALTER TABLE watchhistory
+MODIFY completionpercentage INT CHECK (completionpercentage BETWEEN 0 AND 100);
+ -- modifer
+ALTER TABLE user_
+MODIFY COLUMN subscriptionid int null;
+     

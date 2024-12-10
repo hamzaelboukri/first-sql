@@ -1,0 +1,17 @@
+{
+    "name": "youcode/movier",
+    "require": {
+        "fakerphp/faker": "^1.24"
+    },
+    "autoload": {
+        "psr-4": {
+            "Youcode\\Movier\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hamzaelboukri",
+            "email": "hamzaelboukri01@gmail.com"
+        }
+    ]
+}
