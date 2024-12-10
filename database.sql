@@ -62,7 +62,7 @@ ADD CONSTRAINT FK_2 FOREIGN KEY (UserID) REFERENCES user(UserID)
 ALTER TABLE subscription
 MODIFY COLUMN SubscriptionType ENUM('BASIC', 'PREMIUM') NOT NULL;
 
--- add movier
+--Insérer un film : Ajouter un nouveau film intitulé Data Science Adventures dans le genre "Documentary".
    
 INSERT INTO movie (
     Title,
@@ -90,7 +90,7 @@ MODIFY completionpercentage INT CHECK (completionpercentage BETWEEN 0 AND 100);
  -- modifer
 ALTER TABLE user_
 MODIFY COLUMN subscriptionid int null;
--- sort 
+-- Rechercher des films : Lister tous les films du genre "Comedy" sortis après 2020
 
 SELECT * 
 FROM movie 
@@ -103,3 +103,24 @@ WHERE genre= 'Comedy'AND releaseyear > 2020
      UPDATE subscription 
 SET subscriptiontype = 'Premium', monthlyfee = 11.99
 WHERE subscriptiontype= 'basic';
+
+
+
+
+
+
+
+-- Afficher les abonnements : Joindre les utilisateurs à leurs types d'abonnements.
+
+SELECT u.FirstName, u.LastName, s.SubscriptionType, s.MonthlyFee
+FROM User_ u
+INNER JOIN Subscription s ON u.SubscriptionID = s.SubscriptionID;
+
+
+
+--Filtrer les visionnages : Trouver tous les utilisateurs ayant terminé de regarder un film.
+
+SELECT u.FirstName, u.LastName, w.MovieID ,w.CompletionPercentage
+FROM WatchHistory w
+ inner JOIN User_ u ON w.UserID = u.UserID
+WHERE w.CompletionPercentage = 100;
