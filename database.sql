@@ -124,3 +124,34 @@ SELECT u.FirstName, u.LastName, w.MovieID ,w.CompletionPercentage
 FROM WatchHistory w
  inner JOIN User_ u ON w.UserID = u.UserID
 WHERE w.CompletionPercentage = 100;
+
+
+--Trier et limiter : Afficher les 5 films les plus longs, triés par durée.
+
+SELECT Title,Duration
+FROM Movie 
+ORDER BY `Movie`.`Duration` DESC LIMIT 5
+
+--Agrégation : Calculer le pourcentage moyen de complétion pour chaque film.
+
+SELECT m.movieID, m.title, AVG(w.CompletionPercentage) AS Completi
+FROM WatchHistory w
+JOIN movie m ON w.movieID = m.movieID
+GROUP BY w.movieID, m.title;
+
+
+--Group By : Grouper les utilisateurs par type d’abonnement et compter le nombre total d’utilisateurs par groupe.
+
+SELECT s.SubscriptionType, COUNT(u.UserID) 
+FROM Subscription s
+JOIN user_ u ON s.SubscriptionID = u.SubscriptionID
+GROUP BY s.SubscriptionType;
+
+--Sous-requête (Bonus): Trouver les films ayant une note moyenne supérieure à 4.
+
+SELECT m.Title, AVG(r.Rating) 
+FROM Movie m
+JOIN Review r ON m.MovieID = r.MovieID
+GROUP BY m.MovieID, m.Title
+HAVING AVG(r.Rating) < 4;
+
