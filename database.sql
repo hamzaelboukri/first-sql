@@ -155,3 +155,21 @@ JOIN Review r ON m.MovieID = r.MovieID
 GROUP BY m.MovieID, m.Title
 HAVING AVG(r.Rating) < 4;
 
+
+--Self-Join (Bonus): Trouver des paires de films du même genre sortis la même année.
+SELECT m1.Title AS Movie1,m2.Title AS Movie2  ,m1.Genre ,m1.ReleaseYear 
+FROM movie M1
+JOIN movie m2 ON m1.Genre=m2.Genre AND m2.ReleaseYear=m1.ReleaseYear AND m1.MovieID<m2.MovieID;
+
+--CTE (Bonus): Lister les 3 films les mieux notés grâce à une expression de table commune.`
+WITH Top_M AS (
+    SELECT m.Title, m.Genre, AVG(R.Rating) AS Rating
+    FROM movie m
+    JOIN review R ON R.ReviewID =M.MovieID
+    GROUP BY m.Title, m.Genre 
+    ORDER BY rating DESC
+)
+
+SELECT *
+FROM Top_M
+LIMIT 3;
